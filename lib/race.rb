@@ -9,14 +9,7 @@ module RaceBet
         #first 5 elements of both arrays
         winnerstemp = winners[0..4]
         guessestemp = guesses[0..4]
-        #returning values
-        nopoints = 0
-        fullpoints = 30
-        first = 15
-        second = 10
-        third = 5
-        fourth = 3
-        fifth = 1
+
         #helping variables
         score = 1
         counter = 0
@@ -25,22 +18,22 @@ module RaceBet
 
         #correct first second and third place
         if guesses[0]==winners[0] and guesses[1]==winners[1] and guesses[2]==winners[2]
-         fullpoints        
+         score*30        
         #correct first place
         elsif guesses[0]==winners[0]       
-         first
+         score*15
         #correct 2nd place
         elsif guesses[1]==winners[1]
-          second
+          score*10
         #correct 3rd place
         elsif guesses[2]==winners[2]
-          third
+          score*5
         #correct 4th place
         elsif guesses[3]==winners[3]
-          fourth
+          score*3
         #correct 5th place      
         elsif guesses[4]==winners[4]
-          fifth 
+          score 
         
  
         else
@@ -62,7 +55,7 @@ module RaceBet
           end
           
           #in case nothing is correct    
-          nopoints
+          score*0
         end #if    
         
 
