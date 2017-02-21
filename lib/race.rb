@@ -2,8 +2,8 @@ module RaceBet
   class Race
 
     class << self
-      guesses = [:joe, :mary, :bob, :sheldon, :howard, :frank]
-      winners = [:mary, :bob, :sheldon, :howard, :frank]
+      #guesses = [:joe, :mary, :bob, :sheldon, :howard, :frank]
+      #winners = [:mary, :bob, :sheldon, :howard, :frank]
       
       def score(guesses, winners)
         ##################################################################################
@@ -27,30 +27,35 @@ module RaceBet
         j=1
         ##################################################################################
         # Main logic
-        if guesses[0]==winners[0] and guesses[1]==winners[1] and guesses[2]==winners[2]
+      
                
         #correct first place
-        elsif guesses[0]==winners[0]       
+        if guesses[0]==winners[0] and guesses[0].nil? == false and winners[0].nil? == false       
          keyFirst = true 
+        end
         #correct 2nd place
-        elsif guesses[1]==winners[1]
+        if guesses[1]==winners[1] and guesses[1].nil? == false and winners[1].nil? == false
           keySecond = true
+        end
         #correct 3rd place
-        elsif guesses[2]==winners[2]
+        if guesses[2]==winners[2] and guesses[2].nil? == false and winners[2].nil? == false
           keyThird = true
+        end
         #correct 4th place
-        elsif guesses[3]==winners[3]
+        if guesses[3]==winners[3] and guesses[3].nil? == false and winners[3].nil? == false
           keyForth = true
+        end
         #correct 5th place      
-        elsif guesses[4]==winners[4]
+        if guesses[4]==winners[4] and guesses[4].nil? == false and winners[4].nil? == false
           keyFifth = true
+        end
         
- 
-        else
-          #gives one point for a correct guess in the wrong place
-          5.times do |i|
-            5.times do |j|
-              if guessestemp[i-1]==winnerstemp[j-1] and i!=j
+           #gives one point for a correct guess in the wrong place
+          
+
+           guesses.length.times do |i|
+            winners.length.times do |j|
+              if guessestemp[i-1]==winnerstemp[j-1] and i!=j and guessestemp[i-1].nil? == false and winnerstemp[i-1].nil? == false    
                 #Below is output for console testing
                 #puts"I GIVE ONE to the item below"
                 keyScore = true
@@ -63,11 +68,10 @@ module RaceBet
                 #puts"#{guessestemp[i-1]} == #{winnerstemp[j-1]}"
  
             end
-          end
+          end       
+
           
-          #in case nothing is correct    
-          #keyZero = true
-        end #if
+ 
         ##################################################################################
         #Return value logic
         if  keyFirst == true
@@ -94,11 +98,11 @@ module RaceBet
         end#score         
 
 
-      #score(guesses,winners)
+      
       end #class
         
   end #class
-
+  
 
 end#module
 
