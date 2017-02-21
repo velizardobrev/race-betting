@@ -6,34 +6,44 @@ module RaceBet
       winners = [:mary, :bob, :sheldon, :howard, :frank]
       
       def score(guesses, winners)
+        ##################################################################################
         #first 5 elements of both arrays
         winnerstemp = winners[0..4]
         guessestemp = guesses[0..4]
 
+        #logical flags for result
+        keyFirst = false
+        keySecond = false
+        keyThird = false
+        keyForth = false
+        keyFifth = false
+        keyScore = false
+        #keyZero = false
         #helping variables
         score = 1
+        total = 0
         counter = 0
         i=1
         j=1
-
-        #correct first second and third place
+        ##################################################################################
+        # Main logic
         if guesses[0]==winners[0] and guesses[1]==winners[1] and guesses[2]==winners[2]
-         score*30        
+               
         #correct first place
         elsif guesses[0]==winners[0]       
-         score*15
+         keyFirst = true 
         #correct 2nd place
         elsif guesses[1]==winners[1]
-          score*10
+          keySecond = true
         #correct 3rd place
         elsif guesses[2]==winners[2]
-          score*5
+          keyThird = true
         #correct 4th place
         elsif guesses[3]==winners[3]
-          score*3
+          keyForth = true
         #correct 5th place      
         elsif guesses[4]==winners[4]
-          score 
+          keyFifth = true
         
  
         else
@@ -43,7 +53,8 @@ module RaceBet
               if guessestemp[i-1]==winnerstemp[j-1] and i!=j
                 #Below is output for console testing
                 #puts"I GIVE ONE to the item below"
-                return score
+                keyScore = true
+                counter = counter + 1                
 
                
               end
@@ -55,9 +66,30 @@ module RaceBet
           end
           
           #in case nothing is correct    
-          score*0
-        end #if    
-        
+          #keyZero = true
+        end #if
+        ##################################################################################
+        #Return value logic
+        if  keyFirst == true
+          total = total + 15
+        end
+        if keySecond == true
+          total = total + 10
+        end
+        if keyThird == true
+          total = total + 5
+        end
+        if keyForth == true
+          total = total + 3
+        end                  
+        if keyFifth == true
+          total = total + 1
+        end
+        if keyScore == true
+          total = total + counter*score
+        end
+        #Returning value
+        total          
 
         end#score         
 
