@@ -5,12 +5,12 @@ module RaceBet
       
       def score(guesses, winners)
         ##################################################################################
-        #variables
+        # Variables
         total = 0
         n=0
         ##################################################################################
         # Main logic
-        #subscore method
+        # subScore method
         def subScore(n)
           subTotal=0
           case 
@@ -34,22 +34,22 @@ module RaceBet
               if guessIndex == n and winIndex == n and guessValue == winValue
                 total = total + subScore(n)
               end #if
-            end #do
+            end #times loop
             #missplaced elements
             if guessIndex != winIndex  and guessValue == winValue and guessIndex < 5 and winIndex < 5
               total = total + 1
             end                             
-          end
-        end
+          end #winners loop
+        end #guesses loop
         total            
     
-        end#score
+        end #score
 
-      end#class
+      end #class
 
-  end#class
+  end #class
 
-end#module
+end #module
 
 
 
