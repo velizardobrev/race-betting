@@ -7,30 +7,29 @@ module RaceBet
         ##################################################################################
         #variables
         total = 0
+        n=0
         ##################################################################################
         # Main logic
         guesses.each_with_index do |guessValue, guessIndex|
           winners.each_with_index do |winValue, winIndex|
-            #correct first place
-            if guessIndex == 0 and winIndex == 0 and guessValue == winValue
-              total = total + 15
-            end
-            #correct 2nd place
-            if guessIndex == 1 and winIndex == 1 and guessValue == winValue
-              total = total + 10
-            end
-            #correct 3rd place
-            if guessIndex == 2 and winIndex == 2 and guessValue == winValue
-              total = total + 5
-            end
-            #correct 4th place
-            if guessIndex == 3 and winIndex == 3 and guessValue == winValue
-              total = total + 3
-            end
-            #correct 5th place 
-            if guessIndex == 4 and winIndex == 4 and guessValue == winValue
-              total = total + 1
-            end
+            5.times do |n|
+              if guessIndex == n and winIndex == n and guessValue == winValue
+                case 
+                  when n==0 #first place
+                    total = total + 15
+                  when n==1 #second place 
+                    total = total + 10
+                  when n==2 #3rd place  
+                    total = total + 5 
+                  when n==3 #4th place
+                    total = total + 3
+                  when n==4 #5th place
+                    total = total + 1 
+                  else    
+                end #case
+              end #if
+            end #do
+            #missplaced elements
             if guessIndex != winIndex  and guessValue == winValue and guessIndex < 5 and winIndex < 5
               total = total + 1
             end                             
@@ -38,12 +37,11 @@ module RaceBet
         end
         total            
     
-
         end#score
 
-      end #class
+      end#class
 
-  end #class
+  end#class
 
 end#module
 
